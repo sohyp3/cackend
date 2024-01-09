@@ -14,10 +14,12 @@
 ----------
 **it hasn't yet**
 1. POST Request handling
-2. Cookies
+2. Cookies / Sessions
 3. Https
 4. Secuirty (*csrf + xss*)
 5. ORM ~~maybe related to a future project?~~
+6. Better Error Handling
+7. Server Mangement (Rate Limiting, Static File Mangement) 
 
 ----------
 #### FAQ: 
