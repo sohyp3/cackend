@@ -21,13 +21,12 @@
 
 ----------
 #### FAQ: 
-
 -> why?  
-    - simply cuz its fun  
+&nbsp;&nbsp;&nbsp;&nbsp;- simply cuz its fun  
 -> but rly why?  
-    - i ain't an NPC that uses mainstream stuff  
+&nbsp;&nbsp;&nbsp;&nbsp;- i ain't an NPC that uses mainstream stuff  
 -> whatcha gonna do with it?  
-    - im gonna use it for production to my website  
+&nbsp;&nbsp;&nbsp;&nbsp;- im gonna use it for production to my website  
 -> is it a smart idea?  
-    - i dont remember taking a smart decisions  
+&nbsp;&nbsp;&nbsp;&nbsp;- i dont remember taking a smart decisions  
 
