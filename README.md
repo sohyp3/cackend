@@ -22,7 +22,7 @@
 ----------
 #### FAQ: 
 -> why? 
-    - simply cuz its fun
+    - simply cuz its fun <br>
 -> but rly why?
     - i ain't an NPC that uses mainstream stuff
 -> whatcha gonna do with it?
