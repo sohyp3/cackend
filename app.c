@@ -95,7 +95,7 @@ char *readHtmlFile(const char *file_path){
 
 
 
-char *fullHeader(const char *file_path, int code){
+char *httpResponse(const char *file_path, int code){
 	char *header = generateHttpHeader(code, "text/html");
 	
 	if (header == NULL){
@@ -127,16 +127,16 @@ char *fullHeader(const char *file_path, int code){
 
 char *homePage(const char *method){
 	if (strcmp(method, "GET") == 0){
-		return fullHeader("home.html",200);
+		return httpResponse("home.html",200);
 	}
 	else {
-		return fullHeader("404.html", 404);
+		return httpResponse("404.html", 404);
 	}
 }
 
 
 char *ligmaPage(const char *method){
-	return fullHeader("ligma.html",200);
+	return httpResponse("ligma.html",200);
 }
 
 
@@ -202,14 +202,14 @@ int main(){
 					break;
 				}
 				else{
-					response = fullHeader("405.html", 405);
+					response = httpResponse("405.html", 405);
 					break;
 				}
 			}
 		}
 
 		if (response == NULL){
-			response = fullHeader("404.html",404);
+			response = httpResponse("404.html",404);
 		}
 
 		write(connect_sock, response, strlen(response));
