@@ -10,10 +10,10 @@
 2. Send HTTP Response 
 3. Routing
 4. Responding from HTML files 
+5. POST Request handling
 
 ----------
 **it hasn't yet**
-1. POST Request handling
 2. Cookies / Sessions
 3. Https
 4. Secuirty (*csrf + xss*)
