@@ -8,6 +8,7 @@
 
 typedef struct{
 	char *path;
+	char *method;
 	char *(*responseFunc)(const char *method);
 } PathResponseMap;
 
@@ -48,7 +49,6 @@ char *generateHttpHeader(int code, char *type){
 	strcpy(header, status_line);
 	strcat(header, type_html);
 	
-	printf("\n header is:  %s \n",header);
 
 
 	return header;
@@ -126,28 +126,25 @@ char *fullHeader(const char *file_path, int code){
 }
 
 char *homePage(const char *method){
-	printf("%s",method);
 	if (strcmp(method, "GET") == 0){
 		return fullHeader("home.html",200);
 	}
 	else {
-		printf("here?");
-		return fullHeader("404.html", 405);
+		return fullHeader("404.html", 404);
 	}
 }
 
 
 char *ligmaPage(const char *method){
-	printf("%s",method);
 	return fullHeader("ligma.html",200);
 }
 
 
 PathResponseMap mappings[] = {
-	{"/",homePage},
-	{"/ligma",ligmaPage},
+	{"/","*",homePage},
+	{"/ligma","GET",ligmaPage},
 	
-	{NULL,NULL}
+	{NULL,NULL,NULL}
 };
 
 
@@ -189,7 +186,7 @@ int main(){
 		char buffer[1024];
 		memset(buffer,0, 1023);
 		read(connect_sock,buffer,1023);
-		printf("%s",buffer);
+
 		char method[10], path[50], protocol[10];
 
 		sscanf(buffer, "%s %s %s", method,path,protocol);
@@ -200,8 +197,14 @@ int main(){
 
 		for (int i=0; mappings[i].path != NULL;++i){
 			if (strcmp(path, mappings[i].path ) == 0){
-				response = mappings[i].responseFunc(method);
-				break;
+				if (strcmp(mappings[i].method, method) == 0 || strcmp(mappings[i].method, "*") == 0 ){
+					response = mappings[i].responseFunc(method);
+					break;
+				}
+				else{
+					response = fullHeader("405.html", 405);
+					break;
+				}
 			}
 		}
 
