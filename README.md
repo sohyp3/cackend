@@ -14,7 +14,7 @@
 
 ----------
 **it hasn't yet**:
-1. done
+1. ----
 2. Cookies / Sessions
 3. Https
 4. Secuirty (*csrf + xss*)
