@@ -13,7 +13,7 @@
 5. POST Request handling
 
 ----------
-**it hasn't yet**
+**it hasn't yet**:
 2. Cookies / Sessions
 3. Https
 4. Secuirty (*csrf + xss*)
