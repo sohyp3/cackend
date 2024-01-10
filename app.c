@@ -8,7 +8,7 @@
 
 typedef struct{
 	char *path;
-	char *(*responseFunc)(void);
+	char *(*responseFunc)(const char *method);
 } PathResponseMap;
 
 
@@ -17,6 +17,8 @@ typedef struct{
 char *generateHttpHeader(int code, char *type){
 	char *header_code_200  = "HTTP/1.1 200 OK\n";
 	char *header_code_404  = "HTTP/1.1 404 Not Found\n";
+	char *header_code_405 = "HTTP/1.1 405 Method Not Allowed\n";
+
 	char *type_html = "Content-Type: text/html\n\n";
 
 	char *status_line;	
@@ -26,6 +28,10 @@ char *generateHttpHeader(int code, char *type){
 	}
 	else if (code == 404){
 		status_line = header_code_404;
+	}
+	else if (code == 405){
+
+		status_line = header_code_405;
 	}
 	else{
 		perror("invalid code given");
@@ -119,12 +125,20 @@ char *fullHeader(const char *file_path, int code){
 	return response;
 }
 
-char *homePage(){
-	return fullHeader("home.html",200);
+char *homePage(const char *method){
+	printf("%s",method);
+	if (strcmp(method, "GET") == 0){
+		return fullHeader("home.html",200);
+	}
+	else {
+		printf("here?");
+		return fullHeader("404.html", 405);
+	}
 }
 
 
-char *ligmaPage(){
+char *ligmaPage(const char *method){
+	printf("%s",method);
 	return fullHeader("ligma.html",200);
 }
 
@@ -175,7 +189,7 @@ int main(){
 		char buffer[1024];
 		memset(buffer,0, 1023);
 		read(connect_sock,buffer,1023);
-
+		printf("%s",buffer);
 		char method[10], path[50], protocol[10];
 
 		sscanf(buffer, "%s %s %s", method,path,protocol);
@@ -186,7 +200,7 @@ int main(){
 
 		for (int i=0; mappings[i].path != NULL;++i){
 			if (strcmp(path, mappings[i].path ) == 0){
-				response = mappings[i].responseFunc();
+				response = mappings[i].responseFunc(method);
 				break;
 			}
 		}
