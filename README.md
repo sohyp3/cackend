@@ -20,7 +20,9 @@
 4. Secuirty (*csrf + xss*)
 5. ORM ~~maybe related to a future project?~~
 6. Better Error Handling
-7. Server Mangement (Rate Limiting, Static File Mangement) 
+7. Server Mangement (Rate Limiting, Static File Mangement)
+8. JSON
+9. Proto Buffs
 
 ----------
 #### FAQ: 
