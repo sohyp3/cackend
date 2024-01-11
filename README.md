@@ -23,6 +23,7 @@
 7. Server Mangement (Rate Limiting, Static File Mangement)
 8. JSON
 9. Proto Buffs
+10. auto logger
 
 ----------
 #### FAQ: 
